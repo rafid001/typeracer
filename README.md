@@ -2,8 +2,6 @@
 
 A modern, real-time typing game where players can compete against each other to see who can type the fastest.
 
-<video src="https://www.youtube.com/watch?v=rTddvDdfsP8" width="320" height="240" controls></video>
-
 ## Features
 
 - **Multiplayer Racing**: Compete in real-time with friends or strangers
@@ -13,6 +11,10 @@ A modern, real-time typing game where players can compete against each other to 
 - **Shareable Game Codes**: Easily invite friends with unique game IDs
 - **Live Leaderboards**: Track player positions during and after races
 - **Cross-browser Compatible**: Works on all modern browsers
+
+## Demo
+
+See the game in action: [Watch the Demo Video](https://www.youtube.com/watch?v=rTddvDdfsP8)
 
 ## Technology Stack
 
