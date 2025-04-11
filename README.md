@@ -2,7 +2,7 @@
 
 A modern, real-time typing game where players can compete against each other to see who can type the fastest.
 
-![TypeRacer Screenshot](https://raw.githubusercontent.com/yourusername/typeracer/main/screenshot.png)
+<video src="https://www.youtube.com/watch?v=rTddvDdfsP8" width="320" height="240" controls></video>
 
 ## Features
 
@@ -13,10 +13,6 @@ A modern, real-time typing game where players can compete against each other to 
 - **Shareable Game Codes**: Easily invite friends with unique game IDs
 - **Live Leaderboards**: Track player positions during and after races
 - **Cross-browser Compatible**: Works on all modern browsers
-
-## Demo
-
-See the game in action: [Watch the Demo Video](https://youtu.be/yourdemovideolink)
 
 ## Technology Stack
 
