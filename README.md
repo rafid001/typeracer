@@ -1,81 +1,117 @@
-# Turborepo starter
+# TypeRacer Clone
 
-This is an official starter Turborepo.
+A modern, real-time typing game where players can compete against each other to see who can type the fastest.
 
-## Using this example
+![TypeRacer Screenshot](https://raw.githubusercontent.com/yourusername/typeracer/main/screenshot.png)
 
-Run the following command:
+## Features
 
-```sh
-npx create-turbo@latest
+- **Multiplayer Racing**: Compete in real-time with friends or strangers
+- **Single Player Practice**: Hone your typing skills in practice mode
+- **Live WPM Tracking**: See your words-per-minute update in real-time
+- **Detailed Statistics**: View accuracy, consistency, and character analysis after each race
+- **Shareable Game Codes**: Easily invite friends with unique game IDs
+- **Live Leaderboards**: Track player positions during and after races
+- **Cross-browser Compatible**: Works on all modern browsers
+
+## Demo
+
+See the game in action: [Watch the Demo Video](https://youtu.be/yourdemovideolink)
+
+## Technology Stack
+
+- **Frontend**: Next.js, TypeScript, Socket.io-client, Tailwind CSS
+- **Backend**: Node.js, Socket.io, TypeScript
+- **Deployment**: Vercel (frontend), Railway (backend)
+
+## How to Play
+
+1. Choose between single player practice or multiplayer race
+2. For multiplayer, create a new race or join an existing one with a game code
+3. Share the game code with friends to invite them
+4. Wait for the host to start the race
+5. Type as quickly and accurately as possible
+6. Compare your results with other players
+
+## Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/typeracer.git
+
+# Install dependencies
+cd typeracer
+npm install
+
+# Start development servers
+npm run dev
 ```
 
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## Project Structure
 
 ```
-cd my-turborepo
-pnpm build
+typeracer/
+├── apps/
+│   ├── server/          # Backend Socket.io server
+│   │   ├── classes/     # Game logic and player management
+│   │   ├── utils/       # Helper functions
+│   │   └── index.ts     # Server entry point
+│   └── web/             # Next.js frontend
+│       ├── app/         # Page routes
+│       ├── components/  # React components
+│       ├── public/      # Static assets
+│       └── types/       # TypeScript type definitions
+├── package.json
+└── README.md
 ```
 
-### Develop
+## Game Mechanics
 
-To develop all apps and packages, run the following command:
+- Players type a randomly generated paragraph
+- Score is based on correctly typed words
+- WPM (Words Per Minute) updates in real-time
+- The game ends after 60 seconds
+- Players can see their ranking on the leaderboard
+- Detailed statistics are shown after each race
 
-```
-cd my-turborepo
-pnpm dev
-```
+## Technical Implementation Highlights
 
-### Remote Caching
+### WPM Calculation and Display
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+The application calculates WPM in real-time using the formula:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- WPM = (correct characters / 5) / minutes elapsed
 
-```
-cd my-turborepo
-npx turbo login
-```
+Recent improvements to WPM display include:
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- Added a clear WPM display in the multiplayer race results table with font-bold and text-lg styling
+- Used a more reliable check with player.wpm !== undefined instead of the falsy check that could ignore legitimate zero values
+- Added debug logging to help trace the WPM values at the end of a race
+- Added a 500ms delay when calculating detailed stats to ensure all final player score updates are received
+- Updated the header to show "WPM" in uppercase and bold
+- Ensured the multiplayer mode gets the server's WPM value for the current player
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+These changes ensure that WPM values are properly displayed in all views at the end of the race, even if there were timing issues with receiving the final updates.
 
-```
-npx turbo link
-```
+### Real-time Communication
 
-## Useful Links
+- Socket.io is used for bidirectional communication between client and server
+- The server broadcasts score updates to all players in a game room
+- Custom events track typing progress, game state, and player connections
+- Players see immediate feedback on their own performance and others' progress
 
-Learn more about the power of Turborepo:
+## Future Improvements
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- User accounts and persistent statistics
+- More game modes (e.g., challenges, tournaments)
+- Customizable themes and keyboard layouts
+- Mobile-friendly design
+- Internationalization support
+
+## Contributing
+
+Contributions are welcome! Feel free to submit a pull request or open an issue for bug reports and feature requests.
+
+## License
+
+MIT
