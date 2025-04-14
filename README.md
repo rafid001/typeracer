@@ -106,10 +106,4 @@ These changes ensure that WPM values are properly displayed in all views at the 
 - Mobile-friendly design
 - Internationalization support
 
-## Contributing
 
-Contributions are welcome! Feel free to submit a pull request or open an issue for bug reports and feature requests.
-
-## License
-
-MIT
